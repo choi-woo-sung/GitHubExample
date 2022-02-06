@@ -61,7 +61,14 @@ dependencies {
     implementation(Dependencies.AndroidX.MATERIAL)
     implementation(Dependencies.AndroidX.COROUTINE)
     implementation(Dependencies.AndroidX.LIFECYCLE)
+    implementation(Dependencies.AndroidX.PAGINGCOMMON)
+    implementation(Dependencies.AndroidX.PAGINGRUNTIME)
     implementation(Dependencies.AndroidX.VIEWMODEL)
+    implementation(Dependencies.AndroidX.ACTIVITY)
+
+
+    //Kotlin
+    implementation(KTX.CORE)
 
     //Second Lib
     implementation(Dependencies.Lib.QRCODE)
