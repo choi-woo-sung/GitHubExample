@@ -61,7 +61,8 @@ dependencies {
     implementation(Dependencies.AndroidX.MATERIAL)
     implementation(Dependencies.AndroidX.COROUTINE)
     implementation(Dependencies.AndroidX.LIFECYCLE)
-    implementation(Dependencies.AndroidX.VIEWMODEL)
+    implementation(Dependencies.AndroidX.PAGINGCOMMON)
+    implementation(Dependencies.AndroidX.PAGINGRUNTIME)
 
     //Second Lib
     implementation(Dependencies.Lib.QRCODE)

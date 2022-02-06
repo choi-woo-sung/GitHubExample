@@ -1,12 +1,12 @@
 object  Dependencies{
     object AndroidX {
-
         const val MATERIAL = "com.google.android.material:material:1.5.0"
         const val CONSTRAINT_LAYOUT = "androidx.constraintlayout:constraintlayout:2.1.3"
         const val APP_COMPAT = "androidx.appcompat:appcompat:1.4.1"
         const val COROUTINE = "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9"
         const val LIFECYCLE = "androidx.lifecycle:lifecycle-runtime-ktx:2.5.0-alpha01"
-        const val VIEWMODEL = "androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.0-alpha01"
+        const val PAGINGCOMMON = "androidx.paging:paging-common-ktx:3.0.1"
+        const val PAGINGRUNTIME = "androidx.paging:paging-runtime-ktx:3.0.1"
 
     }
 
