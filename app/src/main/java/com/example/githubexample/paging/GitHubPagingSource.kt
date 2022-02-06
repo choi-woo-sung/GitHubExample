@@ -11,7 +11,7 @@ class GitHubPagingSource(private val gitHubService: GithubService) : PagingSourc
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, GitHubDto> {
         return try {
-            val page = params.key ?: 1 // set page 1 as default
+            val page = params.key ?: 1 // 처음은 1
             val pageSize = params.loadSize
             val repoResponse = gitHubService.searchRepos(page = page, perPage = pageSize)
             val repoItems = repoResponse.items
