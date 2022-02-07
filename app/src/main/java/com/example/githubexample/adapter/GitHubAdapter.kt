@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.example.githubexample.databinding.ItemGithhubBinding
 import com.example.githubexample.model.GitHubDto
 
 class GitHubAdapter: PagingDataAdapter<GitHubDto, RecyclerView.ViewHolder>(COMPARATOR) {
@@ -30,17 +31,17 @@ class GitHubAdapter: PagingDataAdapter<GitHubDto, RecyclerView.ViewHolder>(COMPA
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
 
-        if (holder is MeterReadingListHolder) {
-            val MeterReadingListHolder = getItem(position)
+        if (holder is GithHubListHolder) {
+            val gitHubDto = getItem(position)
 
-//            //더미데이터 값을 넣었다.
-            holder.binding. = MeterReadingListHolder
+//            //data에 선언된 variable bind
+            holder.binding.githubVariable = gitHubDto
 //
 //
             //MainActivity에 값을 전달할 ClickEvent
             if (position != RecyclerView.NO_POSITION) {
                 holder.itemView.setOnClickListener {
-                    MeterReadingListHolder?.run {
+                    gitHubDto?.run {
                         listener?.onItemClick(holder.itemView, this, position)
                     }
                 }
@@ -50,8 +51,8 @@ class GitHubAdapter: PagingDataAdapter<GitHubDto, RecyclerView.ViewHolder>(COMPA
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return MeterReadingListHolder(
-            MeterReadingItemBinding.inflate(
+        return GithHubListHolder(
+            ItemGithhubBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
@@ -59,12 +60,12 @@ class GitHubAdapter: PagingDataAdapter<GitHubDto, RecyclerView.ViewHolder>(COMPA
         )
     }
 
-    class MeterReadingListHolder(
-        val binding: MeterReadingItemBinding
+    class GithHubListHolder(
+        val binding: ItemGithhubBinding
     ) : RecyclerView.ViewHolder(binding.root)
 
     interface OnItemClickListener {
-        fun onItemClick(v: View, WatmetMemorMtInspHist: WatmetMemorMtInspHist, pos: Int)
+        fun onItemClick(v: View, gitHubDto: GitHubDto, pos: Int)
     }
 
 
