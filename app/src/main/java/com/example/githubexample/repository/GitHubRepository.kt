@@ -16,17 +16,18 @@ import javax.inject.Singleton
 @Singleton
 class GitHubRepository @Inject constructor(
     private val githubService: GithubService,
-    private val dispatcher: CoroutineDispatcher
-){
+//    private val dispatcher: CoroutineDispatcher
+) {
     @WorkerThread
     fun fetchGitHubList(
-        pageSize : Int,
-
+        pageSize: Int,
+        sort: String,
+        search: String
     ): Flow<PagingData<GitHubDto>> {
 
         return Pager(
             config = PagingConfig(pageSize),
-            pagingSourceFactory = { GitHubPagingSource(githubService ) }
+            pagingSourceFactory = { GitHubPagingSource(githubService, sort, search) }
         ).flow
     }
 

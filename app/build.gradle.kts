@@ -63,7 +63,7 @@ dependencies {
     implementation(Dependencies.AndroidX.LIFECYCLE)
     implementation(Dependencies.AndroidX.PAGINGCOMMON)
     implementation(Dependencies.AndroidX.PAGINGRUNTIME)
-    implementation(Dependencies.AndroidX.VIEWMODEL)
+//    implementation(Dependencies.AndroidX.VIEWMODEL)
     implementation(Dependencies.AndroidX.ACTIVITY)
 
 
