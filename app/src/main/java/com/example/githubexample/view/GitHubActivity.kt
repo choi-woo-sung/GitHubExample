@@ -11,6 +11,9 @@ import com.example.githubexample.databinding.ActivityGitHubBinding
 import com.example.githubexample.view.base.BaseActivity
 import com.example.githubexample.viewmodel.GitHubViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.combine
+import timber.log.Timber
 
 
 @AndroidEntryPoint
@@ -27,12 +30,20 @@ class GitHubActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // Adapter Setting
-        with(binding) {
-            viewmodel = gitHubviewModel
-            listGithub.layoutManager = LinearLayoutManager(this@GitHubActivity)
-            listGithub.adapter = gitHubAdapter.withLoadStateFooter(FooterAdapter { gitHubAdapter.retry() })
-        }
+        repeatOnStarted {
+            gitHubviewModel.pageValue.collect { page ->
+                gitHubviewModel.fetchGitHubList().collect { pagingData ->
+                    gitHubAdapter.submitData(pagingData)
+                }
 
-    }
+                // Adapter Setting
+                with(binding) {
+                    viewmodel = gitHubviewModel
+                    listGithub.layoutManager = LinearLayoutManager(this@GitHubActivity)
+                    listGithub.adapter =
+                        gitHubAdapter.withLoadStateFooter(FooterAdapter { gitHubAdapter.retry() })
+                }
+
+            }
+        }
 }

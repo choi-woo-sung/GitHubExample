@@ -20,13 +20,13 @@ class GitHubRepository @Inject constructor(
 ) {
     @WorkerThread
     fun fetchGitHubList(
-        pageSize: Int,
-        sort: String,
+        pageSize: String,
+        sort: String = "stars",
         search: String
     ): Flow<PagingData<GitHubDto>> {
 
         return Pager(
-            config = PagingConfig(pageSize),
+            config = PagingConfig(pageSize.toInt()),
             pagingSourceFactory = { GitHubPagingSource(githubService, sort, search) }
         ).flow
     }

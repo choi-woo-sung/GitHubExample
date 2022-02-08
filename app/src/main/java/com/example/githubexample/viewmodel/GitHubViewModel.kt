@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
-import com.example.githubexample.R
 import com.example.githubexample.di.ResourceProvider
 import com.example.githubexample.model.GitHubDto
 import com.example.githubexample.repository.GitHubRepository
@@ -27,15 +26,22 @@ class GitHubViewModel @Inject constructor(
 //    var  spinnerEntry = _spinnerEntry.asStateFlow()
 
     //검색 데이터값
-    private val _searchValue =  MutableStateFlow("")
-    var searchValue = _searchValue.asStateFlow()
+     val _searchValue =  MutableStateFlow("Android")
+    val searchValue = _searchValue.asStateFlow()
+
+
+
+    val _pageValue =  MutableStateFlow("10")
+    val pageValue = _pageValue.asStateFlow()
+
+
+
 
 //    private val _ =  MutableStateFlow("")
 //    var searchValue = _searchValue.asStateFlow()
 
-//    fun fetchGitHubList(search: String, date: Int): Flow<PagingData<GitHubDto>> {
-//
-//        return gitHubRepository.fetchGitHubList(pageSize = ,date).cachedIn(viewModelScope)
-//    }
+    fun fetchGitHubList(): Flow<PagingData<GitHubDto>>  = gitHubRepository.fetchGitHubList(pageSize = pageValue.value , search = searchValue.value).cachedIn(viewModelScope)
 
-}
+
+    }
+
