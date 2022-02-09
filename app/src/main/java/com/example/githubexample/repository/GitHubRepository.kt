@@ -32,4 +32,19 @@ class GitHubRepository @Inject constructor(
     }
 
 
+    @WorkerThread
+    fun fetchGitDetail(
+        pageSize: String,
+        sort: String = "stars",
+        search: String
+    ): Flow<PagingData<GitHubDto>> {
+
+        return Pager(
+            config = PagingConfig(pageSize.toInt()),
+            pagingSourceFactory = { GitHubPagingSource(githubService, sort, search) }
+        ).flow
+    }
+
+
+
 }

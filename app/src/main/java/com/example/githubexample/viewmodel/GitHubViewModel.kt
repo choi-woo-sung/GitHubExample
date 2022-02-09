@@ -13,6 +13,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
@@ -26,15 +27,15 @@ class GitHubViewModel @Inject constructor(
 //    var  spinnerEntry = _spinnerEntry.asStateFlow()
 
     //검색 데이터값
-     val _searchValue =  MutableStateFlow("Android")
+    private val _searchValue =  MutableStateFlow("Android")
     val searchValue = _searchValue.asStateFlow()
 
 
 
-    val _pageValue =  MutableStateFlow("10")
+    val _pageValue =  MutableStateFlow("0")
     val pageValue = _pageValue.asStateFlow()
 
-
+    val gitHubList: Flow<PagingData<GitHubDto>> = fetchGitHubList()
 
 
 //    private val _ =  MutableStateFlow("")
@@ -42,6 +43,10 @@ class GitHubViewModel @Inject constructor(
 
     fun fetchGitHubList(): Flow<PagingData<GitHubDto>>  = gitHubRepository.fetchGitHubList(pageSize = pageValue.value , search = searchValue.value).cachedIn(viewModelScope)
 
-
+    fun setSearchQuery(query: String) {
+        viewModelScope.launch {
+            _searchValue.emit(query)
+        }
     }
+}
 

@@ -10,6 +10,7 @@ import androidx.annotation.StringRes
 import androidx.databinding.BindingAdapter
 import androidx.databinding.InverseBindingAdapter
 import androidx.databinding.InverseBindingListener
+import timber.log.Timber
 
 object SpinnerBinding {
 
@@ -26,17 +27,19 @@ object SpinnerBinding {
 
     // attribute는 바인딩 어뎁터처럼 value을 의미한다. event는 반응할 bindingapdater의 value를 의미한다.
     //확장함수를 사용했다.
-    @InverseBindingAdapter(attribute = "selectedValue", event = "selectedValueAttrChanged")
     @JvmStatic
+    @InverseBindingAdapter(attribute = "spinnerValue" , event="selectedValueAttrChanged")
     fun Spinner.getSelectedValue(): Any? {
+        Timber.d("getSelectedValue..")
         return selectedItem
     }
 
+
+    // 위에것이 실행되고 아래의 bindingapdater가 실행된다.
     @JvmStatic
-// 위에것이 실행되고 아래의 bindingapdater가 실행된다.
     @BindingAdapter("selectedValueAttrChanged")
     fun Spinner.InverseBindingListner(inverseBindingListener: InverseBindingListener?) {
-
+        Timber.d("InverseBindingListner..")
         inverseBindingListener?.run {
             onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(
@@ -51,14 +54,19 @@ object SpinnerBinding {
                     }
                 }
 
-                override fun onNothingSelected(parent: AdapterView<*>) {}
+                override fun onNothingSelected(parent: AdapterView<*>) {
+
+
+                }
             }
         }
     }
 
     @JvmStatic
-    @BindingAdapter("selectedValue")
+    @BindingAdapter("spinnerValue")
     fun Spinner.setSelectedValue(selectedValue: Any?) {
+        Timber.d("Setvalue.. $selectedValue")
+
         adapter?.run {
             val position = (adapter as ArrayAdapter<Any>).getPosition(selectedValue)
             setSelection(position, false)

@@ -104,4 +104,10 @@ dependencies {
     //HILT
     implementation(Dependencies.Hilt.HILT)
     kapt(Dependencies.Hilt.HILTCOMPILER)
+
+    //ROOM
+    implementation(Dependencies.Room.ROOM_RUNTIME)
+    implementation(Dependencies.Room.ROOM_COMPILER)
+    implementation(Dependencies.Room.ROOM_KTX)
+
 }

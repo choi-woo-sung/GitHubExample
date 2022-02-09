@@ -15,8 +15,6 @@ object Dependencies {
         const val PAGINGRUNTIME = "androidx.paging:paging-runtime-ktx:3.0.1"
 
 
-
-
     }
 
 
@@ -51,6 +49,13 @@ object Dependencies {
     object Hilt {
         const val HILT = "com.google.dagger:hilt-android:2.38.1"
         const val HILTCOMPILER = "com.google.dagger:hilt-android-compiler:2.38.1"
+
+    }
+
+    object Room {
+        const val ROOM_KTX = "androidx.room:room-ktx:2.4.1"
+        const val ROOM_RUNTIME = "androidx.room:room-runtime:2.4.1"
+        const val ROOM_COMPILER = "androidx.room:room-compiler:2.4.1"
 
     }
 }

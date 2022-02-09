@@ -14,6 +14,7 @@ data class GitHubDto(
     @SerializedName("id") val id: Int,
     @SerializedName("name") val name: String,
     @SerializedName("description") val description: String?,
-    @SerializedName("stargazers_count") val starCount: Int
+    @SerializedName("stargazers_count") val starCount: Int,
+    @SerializedName("full_name") val fullName: String
 )
 
