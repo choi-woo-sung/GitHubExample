@@ -8,7 +8,7 @@ import com.example.githubexample.viewmodel.GitHubViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class gitHubDetailActivity : BaseActivity(){
+class GitHubDetailActivity : BaseActivity(){
 
     private val binding by binding<ActivityGitHubBinding>(R.layout.activity_git_hub)
 

@@ -4,8 +4,9 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/82102/AndroidStudioProjects/GitHubExample/app/src/main/res/layout/activity_git_hub.xml" value="0.1" />
+        <entry key="..\:/Users/82102/AndroidStudioProjects/GitHubExample/app/src/main/res/layout/activity_git_hub_detail.xml" value="0.33" />
         <entry key="..\:/Users/82102/AndroidStudioProjects/GitHubExample/app/src/main/res/layout/footer_item.xml" value="0.358695652173913" />
-        <entry key="..\:/Users/82102/AndroidStudioProjects/GitHubExample/app/src/main/res/layout/item_githhub.xml" value="0.24139492753623187" />
+        <entry key="..\:/Users/82102/AndroidStudioProjects/GitHubExample/app/src/main/res/layout/item_githhub.xml" value="0.12195121951219512" />
         <entry key="app/src/main/res/layout/activity_git_hub.xml" value="0.33" />
         <entry key="app/src/main/res/layout/footer_item.xml" value="0.8989583333333333" />
         <entry key="app/src/main/res/layout/item_githhub.xml" value="0.25" />

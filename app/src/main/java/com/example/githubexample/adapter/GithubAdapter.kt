@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.githubexample.databinding.ItemGithhubBinding
 import com.example.githubexample.model.GitHubDto
 
-class GitHubAdapter: PagingDataAdapter<GitHubDto, RecyclerView.ViewHolder>(COMPARATOR) {
+class GithubAdapter: PagingDataAdapter<GitHubDto, RecyclerView.ViewHolder>(COMPARATOR) {
 
     companion object {
         private val COMPARATOR = object : DiffUtil.ItemCallback<GitHubDto>() {

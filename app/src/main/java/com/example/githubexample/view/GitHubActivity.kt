@@ -1,21 +1,21 @@
 package com.example.githubexample.view
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.activity.viewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.githubexample.R
 import com.example.githubexample.adapter.FooterAdapter
-import com.example.githubexample.adapter.GitHubAdapter
+import com.example.githubexample.adapter.GithubAdapter
 import com.example.githubexample.databinding.ActivityGitHubBinding
+import com.example.githubexample.model.GitHubDto
 import com.example.githubexample.view.base.BaseActivity
 import com.example.githubexample.viewmodel.GitHubViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.combine
-import kotlinx.coroutines.launch
 import timber.log.Timber
 
 
@@ -26,7 +26,7 @@ class GitHubActivity : BaseActivity() {
 
     private val gitHubviewModel: GitHubViewModel by viewModels()
     private val gitHubAdapter by lazy {
-        GitHubAdapter()
+        GithubAdapter()
     }
 
 
@@ -56,6 +56,17 @@ class GitHubActivity : BaseActivity() {
             viewmodel = gitHubviewModel
             listGithub.layoutManager = LinearLayoutManager(this@GitHubActivity)
             listGithub.adapter = gitHubAdapter.withLoadStateFooter(FooterAdapter { gitHubAdapter.retry() })
+
+            gitHubAdapter.setOnItemClickListener(object:  GithubAdapter.OnItemClickListener{
+                override fun onItemClick(v: View, gitHubDto: GitHubDto, pos: Int) {
+                    val intent = Intent(this@GitHubActivity, GitHubDetailActivity::class.java)
+                    intent.putExtra("Detail", "${gitHubDto.fullName}")
+                    startActivity(intent)
+                    finish()
+                }
+
+
+            })
         }
 
     }

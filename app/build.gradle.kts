@@ -107,7 +107,7 @@ dependencies {
 
     //ROOM
     implementation(Dependencies.Room.ROOM_RUNTIME)
-    implementation(Dependencies.Room.ROOM_COMPILER)
+    kapt(Dependencies.Room.ROOM_COMPILER)
     implementation(Dependencies.Room.ROOM_KTX)
 
 }
